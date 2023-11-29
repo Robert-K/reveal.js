@@ -1,40 +1,144 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="./favicon.ico">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<title>PRESENTATION.WAD</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/kosro.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/hybrid.css">
+	<style>
+		.scatter {
+			box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+			transform: translate(0, 50px);
+		}
+
+		.scatter.visible {
+			transform: rotate(var(--angle));
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-transition="zoom">
+				<img data-src="assets/images/logo.svg" alt="Example Logo" height="342px">
+				<h3>Example presentation</h3>
+			</section>
+			<section data-background-video="assets/videos/car.mp4" data-transition="zoom-in slide-out">
+				<h3>Video background!</h3>
+			</section>
+			<section data-background-image="assets/images/bumblebee.jpg">
+				<h3>Image background!</h3>
+			</section>
+			<section data-auto-animate>
+				<h3 data-id="code-title">Oh WOWZERS!</h3>
+				<pre data-id="code-animation"><code data-trim data-line-numbers data-noescape>
+					import React, { useState } from 'react';
+
+					function Example() {
+					  const [count, setCount] = useState(0);
+
+					  return (
+						...
+					  );
+					}
+				</code></pre>
+			</section>
+			<section data-auto-animate>
+				<h3 data-id="code-title">PRETTY CODE 🥰 </h3>
+				<pre data-id="code-animation"><code data-trim data-line-numbers="|4,8-11|17|22-24" data-noescape><script type="text/template">
+							import React, { useState } from 'react';
+
+							function Example() {
+								const [count, setCount] = useState(0);
+
+								return (
+								<div>
+									<p>You clicked {count} times</p>
+									<button onClick={() => setCount(count + 1)}>
+									Click me
+									</button>
+								</div>
+								);
+							}
+
+							function SecondExample() {
+								const [count, setCount] = useState(0);
+
+								return (
+								<div>
+									<p>You clicked {count} times</p>
+									<button onClick={() => setCount(count + 1)}>
+									Click me
+									</button>
+								</div>
+								);
+							}
+				</script></code></pre>
+				<p>It's so pretty!</p>
+			</section>
+			<section>
+				<a href="https://kosro.de">kosro.de</a>
+				<p>Oh wow, a website!</p>
+			</section>
+			<section>
+				<div class="r-stack">
+					<img src="assets/images/headphones.jpg">
+					<img class="fragment scatter" src="assets/images/bumblebee.jpg">
+					<img class="fragment scatter" src="assets/images/headphones.jpg">
+					<img class="fragment scatter" src="assets/images/bumblebee.jpg">
+				</div>
+			</section>
+			<section>
+				<h3>That's it!</h3>
+				<p class="fragment">Questions?</p>
+			</section>
 		</div>
+	</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/zoom/zoom.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/search/search-kosro.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/anything/plugin.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			controlTutorial: true,
+			slideNumber: true,
+			hash: true,
+			previewLinks: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+			anything: [
+				{
+					// Elements with the scatter class will get a random rotation within <max degrees>
+					// Combine it with r-stack to get a sweet photo stack effect
+					className: "scatter",
+					defaults: { max: 7 },
+					initialize: (function (container, options) {
+						container.style.setProperty("--angle", Math.random() * options.max * 2 - options.max + "deg");
+					})
+				}
+			],
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealAnything]
+		});
+	</script>
+</body>
+
 </html>

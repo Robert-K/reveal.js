@@ -1,0 +1,18 @@
+@font-face {
+    font-family: JetBrainsMono NFM;
+    src: url(./JetBrainsMonoNerdFontMono-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: JetBrainsMono NFM;
+    src: url(./JetBrainsMonoNerdFontMono-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: JetBrainsMono NFM;
+    src: url(./JetBrainsMonoNerdFontMono-Italic.ttf);
+    font-weight: normal;
+    font-style: italic;
+}
